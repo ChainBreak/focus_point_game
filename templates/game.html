@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Welcome to Focus Point Game</title>
+  </head>
+
+  <script src = "{{ url_for('static', filename = 'mustache.min.js') }}" ></script>
+  <script src = "{{ url_for('static', filename = 'jquery-3.2.1.min.js') }}" ></script>
+  <script src = "{{ url_for('static', filename = 'jquery.cookie.js') }}" ></script>
+  <script>
+    var poll_timer = setInterval(poll_game_engine,500)
+
+    function poll_game_engine()
+    {
+      var new_address =  window.location.href +"game_state.json"
+      $.getJSON(new_address,update)
+    }
+    function update(json_data)
+    {
+      $("#name_heading").text( json_data.state.player_name)
+    }
+  </script>
+
+
+  <body>
+    <div style="text-align: center;">
+      <h1 id="name_heading">Game</h1>
+      <p>Create a name for your group</p>
+    </div>
+
+  </body>
+</html>

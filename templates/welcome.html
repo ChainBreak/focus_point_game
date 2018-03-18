@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Welcome to Focus Point Game</title>
+  </head>
+
+
+  <script>
+    function load_group()
+    {
+      var group_name = document.getElementById("group_name").value
+      var new_address =  window.location.href +"play/" +group_name
+      window.location = new_address
+    }
+  </script>
+
+
+  <body>
+    <div style="text-align: center;">
+      <h1>Focus Point Game</h1>
+      <p>Create a name for your group</p>
+
+      <input type="text" id="group_name" placeholder="example_group" name="groupe_name">
+      <button type="button" onclick="load_group()">Create Group</button>
+
+    </div>
+
+  </body>
+</html>
