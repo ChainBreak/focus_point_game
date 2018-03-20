@@ -2,9 +2,9 @@
 
 class Player():
 
-    def __init__(self,player_id):
+    def __init__(self,player_id,player_name):
         self.id = player_id
-        self.name = "Player %i" % player_id
+        self.name = player_name
 
     def __str__(self):
-        return str(self.id)
+        return self.name

@@ -9,22 +9,50 @@
   <script src = "{{ url_for('static', filename = 'jquery.cookie.js') }}" ></script>
   <script>
     var poll_timer = setInterval(poll_game_engine,500)
+    var player_name = ""
+
 
     function poll_game_engine()
     {
-      var new_address =  window.location.href +"game_state.json"
-      $.getJSON(new_address,update)
+      var address =  window.location.href +"game_state.json"
+      $.getJSON(address,update)
     }
+
     function update(json_data)
     {
-      $("#name_heading").text( json_data.state.player_name)
+      if (json_data.ok)
+      {
+        if(player_name != json_data.player_name)
+        {
+          $("#player_name").val( json_data.player_name)
+          player_name = json_data.player_name
+        }
+
+      }
+      else {
+        location.reload()
+      }
+    }
+
+    function post_player_data(player_data)
+    {
+      var address =  window.location.href +"player_data"
+      $.post(address,player_data)
+    }
+
+    function player_name_changed()
+    {
+      var new_player_name = $("#player_name").val()
+      post_player_data({player_name: new_player_name})
     }
   </script>
 
 
   <body>
     <div style="text-align: center;">
-      <h1 id="name_heading">Game</h1>
+      <div>
+  			<input id="player_name"  type="text" onblur="player_name_changed();">
+  		</div>
       <p>Create a name for your group</p>
     </div>
 
