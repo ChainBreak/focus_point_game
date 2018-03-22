@@ -7,6 +7,27 @@
   <script src = "{{ url_for('static', filename = 'mustache.min.js') }}" ></script>
   <script src = "{{ url_for('static', filename = 'jquery-3.2.1.min.js') }}" ></script>
   <script src = "{{ url_for('static', filename = 'jquery.cookie.js') }}" ></script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href = "{{ url_for('static', filename = 'w3mobile.css') }}" ></link>
+  <link rel="stylesheet" href = "{{ url_for('static', filename = 'w3.css') }}" ></link>
+
+  <style>
+    #player_name {
+      display: block;
+      margin:5px;
+      padding: 0px;
+      border: 0px;
+      outline: none;
+      height:40px;
+      width: calc(100% - 10px);
+      font-size:25px;
+      text-align: center;
+      color:white;
+      background-color:inherit;
+    }
+  </style>
+
   <script>
     var poll_timer = setInterval(poll_game_engine,500)
     var player_name = ""
@@ -49,12 +70,20 @@
 
 
   <body>
-    <div style="text-align: center;">
-      <div>
-  			<input id="player_name"  type="text" onblur="player_name_changed();">
-  		</div>
-      <p>Create a name for your group</p>
-    </div>
+    <div style="height:100hv">
 
+      <div class="w3-container w3-center w3-blue">
+        <input id="player_name"  type="text" onblur="player_name_changed();">
+      </div>
+
+      <div class="w3-container w3-red" style="flex: 0 1 auto;">
+        <p>Lorem ipsum...</p>
+      </div>
+
+      <div class="w3-container w3-bottom w3-center w3-blue">
+        <h3>Footer</h3>
+      </div>
+
+    </div>
   </body>
 </html>
